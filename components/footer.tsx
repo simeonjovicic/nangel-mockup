@@ -2,47 +2,57 @@ import { Instagram } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border/50">
-      <div className="container mx-auto px-5 md:px-8 py-10 md:py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Logo & Address */}
+    <footer className="bg-foreground text-background relative overflow-hidden">
+      {/* Decorative gold line at top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+      
+      <div className="container mx-auto px-5 md:px-8 py-14 md:py-16">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          {/* Logo & Tagline */}
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-lg font-medium text-foreground mb-1">
+            <h3 className="font-serif text-2xl sm:text-3xl font-medium text-background mb-2">
               Laura Nails
             </h3>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-background/60 text-sm italic font-serif">
+              Modern, natural-looking nails
+            </p>
+          </div>
+
+          {/* Address */}
+          <div className="text-center">
+            <p className="text-background/80 text-sm">
               Ramperstorffergasse 2, 1050 Wien
             </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <a
               href="https://www.instagram.com/lauranails_vienna/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-colors"
+              className="w-11 h-11 rounded-full border border-background/20 flex items-center justify-center text-background/70 hover:text-gold hover:border-gold transition-all duration-300"
               aria-label="Instagram"
             >
-              <Instagram className="w-4 h-4" />
-            </a>
-          </div>
-
-          {/* Legal Links */}
-          <div className="flex items-center gap-6 text-xs text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Impressum
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Datenschutz
+              <Instagram className="w-5 h-5" />
             </a>
           </div>
         </div>
 
-        <div className="border-t border-border/50 mt-8 pt-6 text-center">
-          <p className="text-xs text-muted-foreground">
+        <div className="border-t border-background/10 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-background/50">
             © {new Date().getFullYear()} Laura Nails. All rights reserved.
           </p>
+          
+          {/* Legal Links */}
+          <div className="flex items-center gap-8 text-xs text-background/50">
+            <a href="#" className="hover:text-background transition-colors">
+              Impressum
+            </a>
+            <a href="#" className="hover:text-background transition-colors">
+              Datenschutz
+            </a>
+          </div>
         </div>
       </div>
     </footer>

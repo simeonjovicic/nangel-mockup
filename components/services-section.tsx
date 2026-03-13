@@ -38,41 +38,57 @@ export function ServicesSection() {
   const { ref, isInView } = useInView({ threshold: 0.1 })
 
   return (
-    <section id="services" className="py-20 md:py-28 relative">
+    <section id="services" className="py-24 md:py-32 bg-card relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-32 h-px bg-gradient-to-r from-transparent via-gold-muted/30 to-transparent hidden xl:block" />
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 w-32 h-px bg-gradient-to-l from-transparent via-gold-muted/30 to-transparent hidden xl:block" />
+
       <div ref={ref} className="container mx-auto px-5 md:px-8">
-        <div className="text-center max-w-xl mx-auto mb-14 md:mb-16">
-          <p className="text-accent text-xs font-medium tracking-[0.2em] uppercase mb-4">
+        <div 
+          className={`text-center max-w-2xl mx-auto mb-16 md:mb-20 transition-all duration-700 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <p className="text-gold text-xs font-medium tracking-[0.25em] uppercase mb-5">
             Services
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-foreground mb-5 text-balance">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-foreground mb-6 text-balance leading-tight">
             Tailored Nail Services
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-md mx-auto">
             From classic elegance to modern artistry, services designed to enhance your natural beauty.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {/* Asymmetric service cards grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative bg-card rounded-2xl p-6 border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-500 ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: `${index * 80}ms` }}
+              className={`group relative transition-all duration-700 ${
+                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              } ${index % 2 === 1 ? "lg:translate-y-8" : ""}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors duration-300">
-                <service.icon className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
-              </div>
-              <h3 className="font-serif text-lg font-medium text-foreground mb-2">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {service.description}
-              </p>
-              <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                <span className="text-xs text-muted-foreground">{service.duration}</span>
-                <span className="text-sm font-medium text-foreground">{service.price}</span>
+              <div className="relative bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-border/50 group-hover:border-gold/30 transition-all duration-500 h-full group-hover:shadow-xl">
+                {/* Gold accent line on hover */}
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/50 transition-all duration-500" />
+                
+                <div className="w-14 h-14 rounded-2xl bg-blush flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors duration-500">
+                  <service.icon className="w-6 h-6 text-muted-foreground group-hover:text-gold transition-colors duration-500" />
+                </div>
+                
+                <h3 className="font-serif text-xl sm:text-2xl font-medium text-foreground mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  {service.description}
+                </p>
+                
+                <div className="flex items-center justify-between pt-5 border-t border-border/50">
+                  <span className="text-xs text-muted-foreground tracking-wide">{service.duration}</span>
+                  <span className="font-serif text-lg text-foreground font-medium">{service.price}</span>
+                </div>
               </div>
             </div>
           ))}

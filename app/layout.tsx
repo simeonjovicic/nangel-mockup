@@ -5,18 +5,20 @@ import './globals.css'
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-serif"
 });
 
 const inter = Inter({ 
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-sans"
 });
 
 export const metadata: Metadata = {
-  title: 'Laura Nails – Your Nail Studio in Vienna',
-  description: 'Beautiful, precise manicures in the 5th district of Vienna. Gel nails, BIAB, French tips, and minimal nail art by Laura.',
+  title: 'Laura Nails – Boutique Nail Studio Vienna',
+  description: 'Experience luxury nail artistry in Vienna\'s 5th district. Specializing in gel nails, BIAB, French tips, and minimal nail art. Book your appointment today.',
   generator: 'v0.app',
   icons: {
     icon: [
