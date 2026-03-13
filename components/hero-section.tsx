@@ -9,10 +9,13 @@ const headlineWords = ["Modern,", "Natural-Looking", "Nails"]
 
 export function HeroSection() {
   const imageRef = useRef<HTMLDivElement>(null)
-  const [wordsVisible, setWordsVisible] = useState<boolean[]>([])
+  const [wordsVisible, setWordsVisible] = useState<boolean[]>(new Array(headlineWords.length).fill(false))
   const [isMobile, setIsMobile] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    
     // Check for mobile
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
@@ -28,21 +31,32 @@ export function HeroSection() {
     window.addEventListener("scroll", handleScroll, { passive: true })
     
     // Word-by-word animation
+    const timers: ReturnType<typeof setTimeout>[] = []
     headlineWords.forEach((_, index) => {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setWordsVisible(prev => {
           const newState = [...prev]
           newState[index] = true
           return newState
         })
       }, 400 + index * 200)
+      timers.push(timer)
     })
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("resize", checkMobile)
+      timers.forEach(timer => clearTimeout(timer))
     }
   }, [isMobile])
+  
+  if (!mounted) {
+    return (
+      <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-background">
+        <div className="container mx-auto px-5 md:px-8" />
+      </section>
+    )
+  }
 
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">

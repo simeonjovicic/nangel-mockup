@@ -4,12 +4,12 @@ import Image from "next/image"
 import { useInView } from "@/hooks/use-in-view"
 
 const galleryImages = [
-  { src: "/images/gallery-1.jpg", alt: "Classic French tip manicure", caption: "Classic French", size: "large" },
-  { src: "/images/gallery-2.jpg", alt: "Natural nude gel manicure", caption: "Soft Nude BIAB", size: "small" },
-  { src: "/images/gallery-3.jpg", alt: "Minimal gold line nail art", caption: "Minimal Gold Accent", size: "small" },
-  { src: "/images/gallery-4.jpg", alt: "Soft blush pink gel nails", caption: "Blush Pink Gel", size: "medium" },
-  { src: "/images/gallery-5.jpg", alt: "Milky white natural gel nails", caption: "Milky Sheer", size: "medium" },
-  { src: "/images/gallery-6.jpg", alt: "Nude ombre gradient manicure", caption: "Nude Ombre", size: "large" },
+  { src: "/images/gallery-1.jpg", alt: "Classic French tip manicure", caption: "Classic French" },
+  { src: "/images/gallery-2.jpg", alt: "Natural nude gel manicure", caption: "Soft Nude BIAB" },
+  { src: "/images/gallery-3.jpg", alt: "Minimal gold line nail art", caption: "Minimal Gold Accent" },
+  { src: "/images/gallery-4.jpg", alt: "Soft blush pink gel nails", caption: "Blush Pink Gel" },
+  { src: "/images/gallery-5.jpg", alt: "Milky white natural gel nails", caption: "Milky Sheer" },
+  { src: "/images/gallery-6.jpg", alt: "Nude ombre gradient manicure", caption: "Nude Ombre" },
 ]
 
 export function GallerySection() {

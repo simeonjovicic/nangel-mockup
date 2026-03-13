@@ -90,7 +90,7 @@ export function PriceListSection() {
                 {category.title}
               </h3>
               <ul className="space-y-0">
-                {category.items.map((item, itemIndex) => (
+                {category.items.map((item) => (
                   <li 
                     key={item.service} 
                     className="flex items-baseline justify-between gap-4 py-4 border-b border-border/30 last:border-0"
