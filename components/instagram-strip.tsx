@@ -19,10 +19,10 @@ export function InstagramStrip() {
   const { ref, isInView } = useInView({ threshold: 0.1 })
 
   return (
-    <section className="py-16 overflow-hidden">
+    <section className="py-12 md:py-16 overflow-hidden bg-background">
       <div 
         ref={ref}
-        className={`text-center mb-10 transition-all duration-700 ${
+        className={`text-center mb-8 transition-all duration-700 ${
           isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
@@ -30,60 +30,60 @@ export function InstagramStrip() {
           href="https://www.instagram.com/lauranails_vienna/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <Instagram className="w-5 h-5" />
-          <span className="font-medium">Follow @lauranails_vienna</span>
+          <Instagram className="w-4 h-4" />
+          <span className="text-xs font-medium tracking-[0.1em] uppercase">Follow @lauranails_vienna</span>
         </a>
       </div>
 
       {/* Scrolling Strip */}
       <div className="relative">
         <div 
-          className={`flex gap-4 transition-all duration-1000 ${
+          className={`flex gap-3 transition-all duration-1000 ${
             isInView ? "opacity-100" : "opacity-0"
           }`}
         >
           {/* First Set */}
-          <div className="flex gap-4 animate-scroll">
+          <div className="flex gap-3 animate-scroll">
             {instagramPosts.map((post, index) => (
               <a
                 key={`first-${index}`}
                 href="https://www.instagram.com/lauranails_vienna/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shrink-0 group"
+                className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-xl overflow-hidden shrink-0 group"
               >
                 <Image
                   src={post.src}
                   alt={post.alt}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors flex items-center justify-center">
-                  <Instagram className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
+                  <Instagram className="w-5 h-5 text-background opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </a>
             ))}
           </div>
           {/* Duplicate for seamless loop */}
-          <div className="flex gap-4 animate-scroll">
+          <div className="flex gap-3 animate-scroll">
             {instagramPosts.map((post, index) => (
               <a
                 key={`second-${index}`}
                 href="https://www.instagram.com/lauranails_vienna/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shrink-0 group"
+                className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-xl overflow-hidden shrink-0 group"
               >
                 <Image
                   src={post.src}
                   alt={post.alt}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors flex items-center justify-center">
-                  <Instagram className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
+                  <Instagram className="w-5 h-5 text-background opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </a>
             ))}

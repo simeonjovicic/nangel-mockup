@@ -8,17 +8,17 @@ const features = [
   {
     icon: Sparkles,
     title: "Attention to Detail",
-    description: "Every nail is a canvas for precision and artistry",
+    description: "Every nail crafted with precision",
   },
   {
     icon: Shield,
     title: "Hygiene First",
-    description: "Top-tier sterilization and premium products always",
+    description: "Top-tier sterilization standards",
   },
   {
     icon: Heart,
     title: "Personal Care",
-    description: "A cozy, relaxing atmosphere tailored to you",
+    description: "Cozy atmosphere, just for you",
   },
 ]
 
@@ -26,20 +26,17 @@ export function AboutSection() {
   const { ref, isInView } = useInView({ threshold: 0.2 })
 
   return (
-    <section id="about" className="py-24 bg-card relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-      
+    <section id="about" className="py-20 md:py-28 bg-card relative overflow-hidden">
       <div 
         ref={ref}
-        className={`container mx-auto px-6 transition-all duration-1000 ${
-          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        className={`container mx-auto px-5 md:px-8 transition-all duration-700 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Portrait */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Portrait - Shows second on mobile */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl max-w-md mx-auto">
+            <div className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl max-w-sm mx-auto lg:max-w-none">
               <Image
                 src="/images/laura-portrait.jpg"
                 alt="Laura, nail artist and studio owner"
@@ -48,37 +45,43 @@ export function AboutSection() {
               />
             </div>
             {/* Decorative accent */}
-            <div className="absolute -z-10 top-8 -left-8 w-full h-full bg-accent/10 rounded-3xl" />
+            <div className="absolute -z-10 top-4 sm:top-6 -left-4 sm:-left-6 w-full h-full bg-accent/10 rounded-2xl sm:rounded-3xl" />
           </div>
 
-          {/* Content */}
+          {/* Content - Shows first on mobile */}
           <div className="order-1 lg:order-2">
-            <span className="inline-block text-accent font-medium text-sm tracking-wider uppercase mb-4">
+            <p className="text-accent text-xs font-medium tracking-[0.2em] uppercase mb-4">
               About the Studio
-            </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6 text-balance">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-foreground mb-6 text-balance leading-tight">
               Where Beauty Meets Precision
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-5">
               Welcome to Laura Nails, a boutique nail studio in Vienna&apos;s vibrant 5th district. 
               I&apos;m Laura, a dedicated nail artist passionate about creating beautiful, 
-              modern nail designs that make you feel confident and elegant.
+              natural-looking nail designs.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8">
               Specializing in gel nails, BIAB natural nail strengthening, and delicate nail art, 
-              I focus on quality over quantity. Every appointment is an experience—enjoy a cozy, 
-              modern studio atmosphere while I craft your perfect manicure with meticulous care.
+              I focus on quality over quantity. Every appointment is an experience in my cozy, 
+              modern studio.
             </p>
 
             {/* Features */}
-            <div className="grid sm:grid-cols-3 gap-6">
-              {features.map((feature) => (
-                <div key={feature.title} className="text-center sm:text-left">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-3">
-                    <feature.icon className="w-5 h-5 text-accent" />
+            <div className="grid grid-cols-3 gap-4 sm:gap-6">
+              {features.map((feature, index) => (
+                <div 
+                  key={feature.title} 
+                  className={`text-center transition-all duration-500 ${
+                    isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  }`}
+                  style={{ transitionDelay: `${300 + index * 100}ms` }}
+                >
+                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-muted mb-3">
+                    <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                   </div>
-                  <h3 className="font-medium text-foreground mb-1">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <h3 className="font-medium text-foreground text-xs sm:text-sm mb-1">{feature.title}</h3>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground leading-snug">{feature.description}</p>
                 </div>
               ))}
             </div>
